@@ -319,7 +319,7 @@ def install_estimate_hooks() -> None:
             if days_delta:
                 day = day + dt.timedelta(days=days_delta)
             labeled = show_estimated and hasattr(self, "estimated_label")
-            bucket = "_mapalarm_labeled" if labeled else "_mapalarm_unlabeled"
+            bucket = "_wakestudy_labeled" if labeled else "_wakestudy_unlabeled"
             if not hasattr(self, bucket):
                 setattr(self, bucket, set())
             getattr(self, bucket).add(day)
@@ -390,8 +390,8 @@ def generate_country(code: str, version: str, today: str, from_year: int, max_to
             to_year = int(match.group(2))
 
     marker = estimated_marker(h)
-    labeled = getattr(h, "_mapalarm_labeled", set())
-    hidden = getattr(h, "_mapalarm_unlabeled", set())
+    labeled = getattr(h, "_wakestudy_labeled", set())
+    hidden = getattr(h, "_wakestudy_unlabeled", set())
 
     kept = []
     excluded = 0
